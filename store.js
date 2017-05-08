@@ -2,13 +2,17 @@ const store = () => {
 
   let initialState = undefined;
 
-  let state = () => {}
+  let state = () => {
+    return {};
+  }
   let getState = () => {}
-  let dispatch(action) => {}
+  let dispatch = (action) => {}
 
   return {
+    initialState,
     state,
     getState,
     dispatch
   }
 }
+module.exports = store;
