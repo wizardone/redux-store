@@ -1,18 +1,24 @@
-const store = () => {
-
+const store = (reducer) => {
+  if(typeof(reducer) != 'function'){
+    throw('You must supply a function!');
+  }
   let initialState = undefined;
+  let middlewares = [];
 
   let state = () => {
-    return {};
   }
   let getState = () => {}
-  let dispatch = (action) => {}
+  let subscribe = () => {}
+  let dispatch = (action) => {
+    if(!action.hasOwnProperty('type')){
+      throw('Dispatch actions mush have a type property')
+    }
+  }
 
   return {
-    initialState,
-    state,
     getState,
-    dispatch
+    dispatch,
+    subscribe
   }
 }
 module.exports = store;
