@@ -3,8 +3,7 @@ const store = (reducer) => {
     throw('You must supply a function!');
   }
   let currentReducer = reducer;
-  let initialState = currentReducer.state;
-  let currentState = initialState;
+  let currentState = undefined;
   let middlewares = [];
   let listeners = [];
 
@@ -25,9 +24,12 @@ const store = (reducer) => {
       throw('Dispatch actions mush have a type property');
     }
     let state = currentReducer(currentState, action);
+    currentState = state;
 
     return action;
   }
+
+  dispatch({type: 'INITIALIZE'})
 
   return {
     getState,

@@ -1,9 +1,9 @@
-let reducer = (state = {counter: 0}, action) => {
+let reducer = (state = 0, action) => {
   switch (action.type) {
   case 'INCREMENT':
-    return state.counter + 1
+    return state + 1
   case 'DECREMENT':
-    return state.counter - 1
+    return state - 1
   default:
     return state
   }
@@ -20,7 +20,7 @@ describe('store', () => {
 
 describe('getState', () => {
   it('returns the current state of the store', () => {
-    expect(store.getState()).to.eql(undefined);
+    expect(store.getState()).to.eql(0);
   });
 });
 
@@ -43,5 +43,13 @@ describe('dispatch', () => {
     let action = {type: 'INCREMENT'};
 
     expect(store.dispatch(action)).to.eql(action);
+  });
+
+  it('updates the state of the store', () => {
+    let action = {type: 'INCREMENT'};
+
+    expect(store.getState()).to.eql(0);
+    expect(store.dispatch(action)).to.eql(action);
+    expect(store.getState()).to.eql(1);
   });
 });
