@@ -1,10 +1,10 @@
-const store = (reducer) => {
+const store = (reducer, middlewares = []) => {
   if(typeof(reducer) != 'function'){
     throw('You must supply a function!');
   }
   let currentReducer = reducer;
   let currentState = undefined;
-  let middlewares = [];
+  let currentMiddlewares = middlewares;
   let listeners = [];
 
   let getState = () => {

@@ -59,5 +59,7 @@ describe('dispatch', () => {
     expect(store.getState()).to.eql(0);
     expect(store.dispatch(action)).to.eql(action);
     expect(store.getState()).to.eql(1);
+    expect(store.dispatch(action)).to.eql(action);
+    expect(store.getState()).to.eql(2);
   });
 });
