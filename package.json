@@ -1,0 +1,32 @@
+{
+  "name": "redux-store",
+  "version": "1.0.0",
+  "description": "own, simple, fast store",
+  "main": "store.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wizardone/redux-store.git"
+  },
+  "keywords": [
+    "store",
+    "javascript",
+    "redux",
+    "events",
+    "subscribe"
+  ],
+  "author": "Stefan Slaveykov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wizardone/redux-store/issues"
+  },
+  "homepage": "https://github.com/wizardone/redux-store#readme",
+  "dependencies": {
+    "symbol-observable": "^1.0.4"
+  }
+}
