@@ -18,6 +18,7 @@ const store = (reducer, middlewares = []) => {
       throw('Store listeners must be functions');
     }
     listeners.push(listener);
+
     return true;
   }
 
@@ -25,12 +26,15 @@ const store = (reducer, middlewares = []) => {
     if(!action.hasOwnProperty('type')){
       throw('Dispatch actions mush have a type property');
     }
-    let state = currentReducer(currentState, action);
-    currentState = state;
+    currentState = currentReducer(currentState, action);
+    listeners.forEach((listener) => {
+      listener();
+    });
 
     return action;
   }
 
+  // Dispatch a dummy event that will initialize the store
   dispatch({type: 'INITIALIZE'})
 
   return {

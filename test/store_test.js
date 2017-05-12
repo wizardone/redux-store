@@ -47,14 +47,14 @@ describe('dispatch', () => {
 
   it('dispatches an action to the store', () => {
     const store = require('../store.js')(reducer);
-    let action = {type: 'INCREMENT'};
+    const action = {type: 'INCREMENT'};
 
     expect(store.dispatch(action)).to.eql(action);
   });
 
   it('updates the state of the store', () => {
     const store = require('../store.js')(reducer);
-    let action = {type: 'INCREMENT'};
+    const action = {type: 'INCREMENT'};
 
     expect(store.getState()).to.eql(0);
     expect(store.dispatch(action)).to.eql(action);
@@ -62,4 +62,12 @@ describe('dispatch', () => {
     expect(store.dispatch(action)).to.eql(action);
     expect(store.getState()).to.eql(2);
   });
+
+  it('fires the listeners on a dispatch'/*, () => {
+    const store = require('../store.js')(reducer);
+    const action = {type: 'INCREMENT'};
+    store.subscribe(() => {console.log('subscribed')});
+
+    expect(store.dispatch(action)).to.eql();
+  }*/);
 });
