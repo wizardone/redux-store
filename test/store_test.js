@@ -9,6 +9,9 @@ let reducer = (state = 0, action) => {
   }
 }
 let expect = require('expect.js');
+let sinon = require('/usr/local/lib/node_modules/sinon');
+// Why does it not find sinon-expect??
+expect = require('/usr/local/lib/node_modules/sinon-expect').enhance(expect, sinon, 'was')
 
 describe('store', () => {
   it('has an undefined initialState', () => {
@@ -63,11 +66,14 @@ describe('dispatch', () => {
     expect(store.getState()).to.eql(2);
   });
 
-  it('fires the listeners on a dispatch'/*, () => {
+  it('fires the listeners on a dispatch', () => {
     const store = require('../store.js')(reducer);
     const action = {type: 'INCREMENT'};
-    store.subscribe(() => {console.log('subscribed')});
+    const method = sinon.spy();
 
-    expect(store.dispatch(action)).to.eql();
-  }*/);
+    store.subscribe(method);
+    store.dispatch(action);
+
+    expect(method).was.called();
+  });
 });

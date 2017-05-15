@@ -1,5 +1,3 @@
-let observable = require('symbol-observable');
-
 const store = (reducer, middlewares = []) => {
   if(typeof(reducer) != 'function'){
     throw('You must supply a function!');
